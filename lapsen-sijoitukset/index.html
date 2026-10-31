@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lapsen sijoitukset: salkun kehitys heinäkuusta 2023 | Syntynytsijoittamaan</title>
+<meta name="description" content="Seuraan lapseni sijoitusten kehitystä kuukausi kuukaudelta: salkun arvo, oma pääoma ja tuotto kaaviona heinäkuusta 2023 alkaen.">
+<meta name="theme-color" content="#fff9fd">
+<link rel="canonical" href="https://syntynytsijoittamaan.fi/lapsen-sijoitukset/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fi_FI">
+<meta property="og:site_name" content="Syntynytsijoittamaan">
+<meta property="og:title" content="Lapsen sijoitukset: salkun kehitys heinäkuusta 2023 | Syntynytsijoittamaan">
+<meta property="og:description" content="Seuraan lapseni sijoitusten kehitystä kuukausi kuukaudelta: salkun arvo, oma pääoma ja tuotto kaaviona heinäkuusta 2023 alkaen.">
+<meta property="og:url" content="https://syntynytsijoittamaan.fi/lapsen-sijoitukset/">
+<meta property="og:image" content="https://syntynytsijoittamaan.fi/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Syntynytsijoittamaan: sijoitusvinkit, suositukset ja lapsen sijoitukset">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="/" style="text-decoration:none;color:inherit">Syntynyt<span>sijoittamaan</span></a>
+  </header>
+
+  <main>
+    <a class="back" href="/">← Takaisin</a>
+    <h1 class="pagetitle">Lapsen sijoitukset</h1>
+    <p class="demo" id="demo-note">Esimerkkidata: kaavion luvut ovat keksittyjä ja korvataan oikeilla luvuilla.</p>
+    <p class="sub">Sijoittaminen aloitettiin heinäkuussa 2023. Seuraan lapseni sijoitusten kehitystä kuukausi kuukaudelta. Tässä salkun arvo ja oma pääoma koko ajalta.</p>
+    <div class="stats">
+      <div class="stat s1"><small>Salkun arvo</small><b id="cs-value">–</b></div>
+      <div class="stat s2"><small>Oma pääoma</small><b id="cs-cap">–</b></div>
+      <div class="stat s3"><small>Tuotto</small><b id="cs-gain">–</b></div>
+    </div>
+    <p class="sub" id="cs-date" style="margin:0 0 8px"></p>
+    <div class="chartbox">
+      <div class="readout" id="c-readout" aria-live="polite"></div>
+      <div id="child-chart"></div>
+      <div class="legend"><span><i style="border-color:var(--accent)"></i>Salkun arvo</span><span><i style="border-color:var(--green);border-top-style:dashed"></i>Oma pääoma</span></div>
+    </div>
+    <details class="cdet">
+      <summary>Kuukausittaiset luvut</summary>
+      <div class="ctable-wrap">
+        <table class="ctable">
+          <thead><tr><th>Kuukausi</th><th>Arvo</th><th>Oma pääoma</th><th>Tuotto</th><th>Tuotto-%</th></tr></thead>
+          <tbody id="c-rows"></tbody>
+        </table>
+      </div>
+    </details>
+    <p class="fine" style="font-size:.85rem;color:var(--muted);margin:16px 0 10px">Aiempi tuotto ei ole tae tulevasta. Luvut kertovat vain oman sijoitukseni kehityksestä eivätkä ole sijoitusneuvontaa.</p>
+    <p><a class="btn" href="https://www.instagram.com/syntynytsijoittamaan" rel="noopener" target="_blank">Katso lisää Instagramissa →</a></p>
+  
+  </main>
+
+  <section class="contact" id="yhteydenotto">
+    <h2>Ota yhteyttä</h2>
+    <p class="sub">Kysyttävää tai palautetta? Jätä viesti, niin vastaan sähköpostitse.</p>
+    <form id="contactForm" class="cform" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d571fa1c-7a07-4fed-baec-7f47cc56e816">
+      <input type="hidden" name="subject" value="Uusi viesti Syntynytsijoittamaan-sivulta">
+      <input type="hidden" name="from_name" value="Syntynytsijoittamaan-verkkosivu">
+      <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+      <label for="cf-name">Nimi</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100">
+      <label for="cf-email">Sähköposti</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150">
+      <label for="cf-msg">Viesti</label>
+      <textarea id="cf-msg" name="message" rows="5" required maxlength="3000"></textarea>
+      <p class="fine">Lähettämällä lomakkeen hyväksyt, että tietosi käsitellään <a href="/tietosuoja/">tietosuojaselosteen</a> mukaisesti.</p>
+      <button type="submit" class="btn" id="cf-btn">Lähetä viesti</button>
+      <p id="cf-status" class="cstatus" role="alert" hidden></p>
+    </form>
+    <div id="cf-thanks" class="cthanks" role="status" aria-live="polite" hidden>
+      <h3>Kiitos viestistäsi! 💌</h3>
+      <p>Viesti on lähetetty. Vastaan sinulle sähköpostitse mahdollisimman pian.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="y">2026</span> Syntynytsijoittamaan · <a href="/tietosuoja/">Tietosuoja</a></span>
+    <span><a href="https://www.instagram.com/syntynytsijoittamaan" rel="noopener" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://beacons.ai/syntynytsijoittamaan" rel="noopener" target="_blank">Beacons</a></span>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="/form.js" defer></script>
+<script>
+(function(){
+/* KUUKAUSITTAISET LUVUT: [kuukausi, salkun arvo €, oma pääoma €]. Lisää uusi rivi kuukausittain. */
+var DEMO=false;
+var DATA=[["2023-07",0,0],["2023-12",367.9,350],["2024-12",1518.71,1415.39],["2025-12",2951.83,2665.49],["2026-11",4068.41,3654]];
+var box=document.getElementById('child-chart');
+if(!box||!DATA.length)return;
+if(!DEMO){var dn=document.getElementById('demo-note');if(dn)dn.hidden=true;}
+function eur(n){return n.toLocaleString('fi-FI',{minimumFractionDigits:2,maximumFractionDigits:2})+'\u00a0€';}
+function sgn(n){return (n>=0?'+':'−')+Math.abs(n).toLocaleString('fi-FI',{minimumFractionDigits:2,maximumFractionDigits:2})+'\u00a0€';}
+function pct(n){return (n>=0?'+':'−')+Math.abs(n).toFixed(1).replace('.',',')+' %';}
+function lab(s){var p=s.split('-');return p[1]+'/'+p[0];}
+var n=DATA.length,last=DATA[n-1],gain=last[1]-last[2],gp=last[2]?gain/last[2]*100:0;
+document.getElementById('cs-value').textContent=eur(last[1]);
+document.getElementById('cs-cap').textContent=eur(last[2]);
+document.getElementById('cs-gain').textContent=sgn(gain)+' ('+pct(gp)+')';
+document.getElementById('cs-date').textContent='Tilanne '+lab(last[0]);
+var rows='';
+DATA.slice().reverse().forEach(function(d){var g=d[1]-d[2],p=d[2]?g/d[2]*100:0;rows+='<tr><td>'+lab(d[0])+'</td><td>'+eur(d[1])+'</td><td>'+eur(d[2])+'</td><td>'+sgn(g)+'</td><td>'+pct(p)+'</td></tr>';});
+document.getElementById('c-rows').innerHTML=rows;
+var W=360,H=230,L=48,R=12,T=12,B=30;
+var max=0;DATA.forEach(function(d){max=Math.max(max,d[1],d[2]);});
+var mag=Math.pow(10,Math.floor(Math.log10(max||1))),step=mag/2,top=Math.ceil((max||1)/step)*step;
+var mo=DATA.map(function(d){var q=d[0].split('-');return +q[0]*12+ +q[1];}),m0=mo[0],m1=mo[n-1];
+function x(i){return m1>m0?L+(mo[i]-m0)*(W-L-R)/(m1-m0):L+(W-L-R)/2;}
+function y(v){return T+(H-T-B)*(1-v/top);}
+var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Kaavio salkun arvosta ja omasta pääomasta" style="display:block;touch-action:pan-y">';
+var i;
+for(i=0;i<=4;i++){var v=top*i/4,yy=y(v);s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'" style="stroke:var(--line);opacity:.15"/><text x="'+(L-6)+'" y="'+(yy+3)+'" text-anchor="end" font-size="9" style="fill:var(--muted)">'+Math.round(v).toLocaleString('fi-FI')+'</text>';}
+var kept=[0];
+if(n>1){kept.push(n-1);}
+for(i=1;i<4;i++){var ix=Math.round(i*(n-1)/4);if(ix<=0||ix>=n-1)continue;if(kept.every(function(kk){return Math.abs(x(kk)-x(ix))>=52;}))kept.push(ix);}
+kept.forEach(function(kk){var an=(kk===n-1&&n>1)?'end':'middle';s+='<text x="'+x(kk)+'" y="'+(H-10)+'" text-anchor="'+an+'" font-size="9" style="fill:var(--muted)">'+lab(DATA[kk][0])+'</text>';});
+var pv='',pc='';
+DATA.forEach(function(d,k){pv+=(k?'L':'M')+x(k).toFixed(1)+' '+y(d[1]).toFixed(1);pc+=(k?'L':'M')+x(k).toFixed(1)+' '+y(d[2]).toFixed(1);});
+s+='<path d="'+pv+'L'+x(n-1).toFixed(1)+' '+y(0).toFixed(1)+'L'+x(0).toFixed(1)+' '+y(0).toFixed(1)+'Z" style="fill:var(--accent);opacity:.15"/>';
+s+='<path d="'+pc+'" fill="none" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--green)"/>';
+s+='<path d="'+pv+'" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accent)"/>';
+s+='<line id="cm-line" y1="'+T+'" y2="'+(H-B)+'" style="stroke:var(--ink);opacity:.35"/><circle id="cm-v" r="4.5" style="fill:var(--accent);stroke:var(--surface);stroke-width:2"/><circle id="cm-c" r="4.5" style="fill:var(--green);stroke:var(--surface);stroke-width:2"/>';
+s+='</svg>';
+box.innerHTML=s;
+var svg=box.firstChild,ro=document.getElementById('c-readout');
+function setIdx(k){
+  k=Math.max(0,Math.min(n-1,k));var d=DATA[k],g=d[1]-d[2],p=d[2]?g/d[2]*100:0,xx=x(k);
+  var ln=document.getElementById('cm-line');ln.setAttribute('x1',xx);ln.setAttribute('x2',xx);
+  var a=document.getElementById('cm-v');a.setAttribute('cx',xx);a.setAttribute('cy',y(d[1]));
+  var b=document.getElementById('cm-c');b.setAttribute('cx',xx);b.setAttribute('cy',y(d[2]));
+  ro.innerHTML='<strong>'+lab(d[0])+'</strong><br>Arvo <strong>'+eur(d[1])+'</strong> · Oma pääoma <strong>'+eur(d[2])+'</strong><br>Tuotto <strong>'+sgn(g)+' ('+pct(p)+')</strong>';
+}
+function fromEvent(e){var r=svg.getBoundingClientRect();var vx=(e.clientX-r.left)/r.width*W,best=0,bd=1e9;for(var k=0;k<n;k++){var dd=Math.abs(x(k)-vx);if(dd<bd){bd=dd;best=k;}}return best;}
+svg.addEventListener('pointermove',function(e){setIdx(fromEvent(e));});
+svg.addEventListener('pointerdown',function(e){setIdx(fromEvent(e));});
+setIdx(n-1);
+})();
+</script>
+</body>
+</html>
