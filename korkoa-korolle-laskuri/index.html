@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Korkoa korolle -laskuri | Syntynytsijoittamaan</title>
+<meta name="description" content="Laske, miten kuukausisäästö kasvaa korkoa korolle. Syötä summa, vuosituotto ja aika ja katso kehitys kaaviona. Esimerkki, ei ennuste.">
+<meta name="theme-color" content="#fff9fd">
+<link rel="canonical" href="https://syntynytsijoittamaan.fi/korkoa-korolle-laskuri/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Korkoa korolle -laskuri","url":"https://syntynytsijoittamaan.fi/korkoa-korolle-laskuri/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"fi","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Syntynytsijoittamaan","url":"https://syntynytsijoittamaan.fi/"}}</script>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fi_FI">
+<meta property="og:site_name" content="Syntynytsijoittamaan">
+<meta property="og:title" content="Korkoa korolle -laskuri | Syntynytsijoittamaan">
+<meta property="og:description" content="Laske, miten kuukausisäästö kasvaa korkoa korolle. Syötä summa, vuosituotto ja aika ja katso kehitys kaaviona. Esimerkki, ei ennuste.">
+<meta property="og:url" content="https://syntynytsijoittamaan.fi/korkoa-korolle-laskuri/">
+<meta property="og:image" content="https://syntynytsijoittamaan.fi/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Syntynytsijoittamaan: sijoitusvinkit, suositukset ja lapsen sijoitukset">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="/" style="text-decoration:none;color:inherit">Syntynyt<span>sijoittamaan</span></a>
+  </header>
+
+  <main>
+    <a class="back" href="/">← Takaisin</a>
+    <h1 class="pagetitle">Korkoa korolle -laskuri</h1>
+    <p class="sub">Katso, miten säännöllinen kuukausisäästö kasvaa ajan kanssa. Laskuri on esimerkki, ei ennuste.</p>
+
+    <form id="calc" class="cform" onsubmit="return false" novalidate>
+      <div class="chips" role="group" aria-label="Esimerkkilaskelmat">
+        <button type="button" class="chip" data-m="50" data-y="18">50 €/kk · 18 v</button>
+        <button type="button" class="chip" data-m="100" data-y="18">100 €/kk · 18 v</button>
+        <button type="button" class="chip" data-m="100" data-y="30">100 €/kk · 30 v</button>
+      </div>
+      <label for="c-p0">Alkusumma (€)</label>
+      <input id="c-p0" name="p0" type="text" inputmode="decimal" autocomplete="off" value="0">
+      <label for="c-m">Kuukausisäästö (€)</label>
+      <input id="c-m" name="m" type="text" inputmode="decimal" autocomplete="off" value="50">
+      <label for="c-r">Oletettu vuosituotto (%)</label>
+      <input id="c-r" name="r" type="text" inputmode="decimal" autocomplete="off" value="5" aria-describedby="c-warn">
+      <label for="c-y">Sijoitusaika (vuotta)</label>
+      <input id="c-y" name="y" type="text" inputmode="numeric" autocomplete="off" value="18">
+      <p id="c-warn" class="cstatus" role="status" hidden></p>
+    </form>
+
+    <div class="stats" aria-live="polite">
+      <div class="stat s1"><small>Loppuarvo</small><b id="o-val">–</b></div>
+      <div class="stat s2"><small>Sijoitettu yhteensä</small><b id="o-inv">–</b></div>
+      <div class="stat s3"><small>Tuotto (esimerkki)</small><b id="o-gain">–</b></div>
+    </div>
+
+    <div class="chartbox">
+      <div class="readout" id="calc-readout" aria-live="polite"></div>
+      <div id="calc-chart"></div>
+      <div class="legend"><span><i style="border-color:var(--accent)"></i>Arvo</span><span><i style="border-color:var(--green);border-top-style:dashed"></i>Sijoitettu yhteensä</span></div>
+    </div>
+
+    <details class="cdet">
+      <summary>Vuosittaiset luvut</summary>
+      <div class="ctable-wrap">
+        <table class="ctable">
+          <thead><tr><th>Vuosi</th><th>Arvo</th><th>Sijoitettu</th><th>Tuotto</th><th>Tuotto-%</th></tr></thead>
+          <tbody id="calc-rows"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <h2 class="ph">Näin laskuri toimii</h2>
+    <ul class="opts">
+      <li>Tuotto on sama joka vuosi, ja säästö tehdään kuukauden lopussa.</li>
+      <li>Laskuri ei huomioi veroja, kuluja eikä inflaatiota.</li>
+      <li>Todellinen tuotto vaihtelee vuodesta toiseen, ja arvo voi myös laskea.</li>
+    </ul>
+    <p style="font-size:.85rem;color:var(--muted)">Laskuri on yleinen esimerkki eikä sijoitusneuvontaa. Aiempi tuotto ei ole tae tulevasta.</p>
+
+    <p><a class="btn mint" href="/lapselle-sijoittaminen/">Opas lapselle sijoittamiseen →</a></p>
+    <p><a class="btn" href="/lapsen-sijoitukset/">Katso lapseni sijoitukset →</a></p>
+  </main>
+
+  <section class="contact" id="yhteydenotto">
+    <h2>Ota yhteyttä</h2>
+    <p class="sub">Kysyttävää tai palautetta? Jätä viesti, niin vastaan sähköpostitse.</p>
+    <form id="contactForm" class="cform" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d571fa1c-7a07-4fed-baec-7f47cc56e816">
+      <input type="hidden" name="subject" value="Uusi viesti Syntynytsijoittamaan-sivulta">
+      <input type="hidden" name="from_name" value="Syntynytsijoittamaan-verkkosivu">
+      <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+      <label for="cf-name">Nimi</label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100">
+      <label for="cf-email">Sähköposti</label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="150">
+      <label for="cf-msg">Viesti</label>
+      <textarea id="cf-msg" name="message" rows="5" required maxlength="3000"></textarea>
+      <p class="fine">Lähettämällä lomakkeen hyväksyt, että tietosi käsitellään <a href="/tietosuoja/">tietosuojaselosteen</a> mukaisesti.</p>
+      <button type="submit" class="btn" id="cf-btn">Lähetä viesti</button>
+      <p id="cf-status" class="cstatus" role="alert" hidden></p>
+    </form>
+    <div id="cf-thanks" class="cthanks" role="status" aria-live="polite" hidden>
+      <h3>Kiitos viestistäsi! 💌</h3>
+      <p>Viesti on lähetetty. Vastaan sinulle sähköpostitse mahdollisimman pian.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="y">2026</span> Syntynytsijoittamaan · <a href="/tietosuoja/">Tietosuoja</a></span>
+    <span><a href="https://www.instagram.com/syntynytsijoittamaan" rel="noopener" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://beacons.ai/syntynytsijoittamaan" rel="noopener" target="_blank">Beacons</a></span>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="/form.js" defer></script>
+<script>
+(function(){
+var f=document.getElementById('calc');
+if(!f)return;
+function num(v,d){var x=parseFloat(String(v).replace(/\s/g,'').replace(',','.'));return isFinite(x)?x:d;}
+function clamp(x,a,b){return Math.min(b,Math.max(a,x));}
+var NB='\u00a0';
+function eur(n){return Math.round(n).toLocaleString('fi-FI')+NB+'€';}
+function sgn(n){return (n>=0?'+':'\u2212')+Math.abs(Math.round(n)).toLocaleString('fi-FI')+NB+'€';}
+function pct(n){return (n>=0?'+':'\u2212')+Math.abs(n).toFixed(1).replace('.',',')+NB+'%';}
+var box=document.getElementById('calc-chart'),ro=document.getElementById('calc-readout');
+var W=360,H=230,L=52,R=12,T=12,B=30,data=[],svg=null;
+function xp(i){return L+i*(W-L-R)/Math.max(data.length-1,1);}
+function render(){
+  var n=data.length,max=0,i;
+  data.forEach(function(d){max=Math.max(max,d[1],d[2]);});
+  var mag=Math.pow(10,Math.floor(Math.log10(max||1))),step=mag/2,top=Math.ceil((max||1)/step)*step;
+  function yp(v){return T+(H-T-B)*(1-v/top);}
+  var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Kaavio sijoituksen arvon kehityksestä" style="display:block;touch-action:pan-y">';
+  for(i=0;i<=4;i++){var v=top*i/4,yy=yp(v);s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'" style="stroke:var(--line);opacity:.15"/><text x="'+(L-6)+'" y="'+(yy+3)+'" text-anchor="end" font-size="9" style="fill:var(--muted)">'+Math.round(v).toLocaleString('fi-FI')+'</text>';}
+  var kept=[0];if(n>1)kept.push(n-1);
+  for(i=1;i<4;i++){var ix=Math.round(i*(n-1)/4);if(ix<=0||ix>=n-1)continue;if(kept.every(function(k){return Math.abs(xp(k)-xp(ix))>=44;}))kept.push(ix);}
+  kept.forEach(function(k){var an=(k===n-1&&n>1)?'end':'middle';s+='<text x="'+xp(k)+'" y="'+(H-10)+'" text-anchor="'+an+'" font-size="9" style="fill:var(--muted)">'+data[k][0]+' v</text>';});
+  var pv='',pc='';
+  data.forEach(function(d,k){pv+=(k?'L':'M')+xp(k).toFixed(1)+' '+yp(d[1]).toFixed(1);pc+=(k?'L':'M')+xp(k).toFixed(1)+' '+yp(d[2]).toFixed(1);});
+  s+='<path d="'+pv+'L'+xp(n-1).toFixed(1)+' '+yp(0).toFixed(1)+'L'+xp(0).toFixed(1)+' '+yp(0).toFixed(1)+'Z" style="fill:var(--accent);opacity:.15"/>';
+  s+='<path d="'+pc+'" fill="none" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--green)"/>';
+  s+='<path d="'+pv+'" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--accent)"/>';
+  s+='<line id="k-line" y1="'+T+'" y2="'+(H-B)+'" style="stroke:var(--ink);opacity:.35"/><circle id="k-v" r="4.5" style="fill:var(--accent);stroke:var(--surface);stroke-width:2"/><circle id="k-c" r="4.5" style="fill:var(--green);stroke:var(--surface);stroke-width:2"/></svg>';
+  box.innerHTML=s;svg=box.firstChild;
+  function mark(k){
+    k=Math.max(0,Math.min(n-1,k));var d=data[k],g=d[1]-d[2],p=d[2]?g/d[2]*100:0,xx=xp(k);
+    var ln=document.getElementById('k-line');ln.setAttribute('x1',xx);ln.setAttribute('x2',xx);
+    var a=document.getElementById('k-v');a.setAttribute('cx',xx);a.setAttribute('cy',yp(d[1]));
+    var c=document.getElementById('k-c');c.setAttribute('cx',xx);c.setAttribute('cy',yp(d[2]));
+    ro.innerHTML='<strong>'+d[0]+' vuoden kohdalla</strong><br>Arvo <strong>'+eur(d[1])+'</strong> · Sijoitettu <strong>'+eur(d[2])+'</strong><br>Tuotto <strong>'+sgn(g)+(d[2]?' ('+pct(p)+')':'')+'</strong>';
+  }
+  function fromEvent(e){var r=svg.getBoundingClientRect();var vx=(e.clientX-r.left)/r.width*W;return Math.round((vx-L)/((W-L-R)/Math.max(n-1,1)));}
+  svg.addEventListener('pointermove',function(e){mark(fromEvent(e));});
+  svg.addEventListener('pointerdown',function(e){mark(fromEvent(e));});
+  mark(n-1);
+}
+function calc(){
+  var P0=clamp(num(f.p0.value,0),0,1e7),M=clamp(num(f.m.value,0),0,1e5),Rt=clamp(num(f.r.value,0),0,30),Y=Math.round(clamp(num(f.y.value,1),1,60));
+  var rm=Math.pow(1+Rt/100,1/12)-1,val=P0,inv=P0;
+  data=[[0,val,inv]];
+  for(var m=1;m<=Y*12;m++){val=val*(1+rm)+M;inv+=M;if(m%12===0)data.push([m/12,val,inv]);}
+  var last=data[data.length-1],gain=last[1]-last[2],gp=last[2]?gain/last[2]*100:0;
+  document.getElementById('o-val').textContent=eur(last[1]);
+  document.getElementById('o-inv').textContent=eur(last[2]);
+  document.getElementById('o-gain').textContent=sgn(gain)+(last[2]?' ('+pct(gp)+')':'');
+  var rows='';
+  data.slice(1).forEach(function(d){var g=d[1]-d[2],p=d[2]?g/d[2]*100:0;rows+='<tr><td>'+d[0]+'</td><td>'+eur(d[1])+'</td><td>'+eur(d[2])+'</td><td>'+sgn(g)+'</td><td>'+pct(p)+'</td></tr>';});
+  document.getElementById('calc-rows').innerHTML=rows;
+  var w=document.getElementById('c-warn');
+  if(num(f.r.value,0)>10){w.textContent='Korkea tuottoarvio: todellinen tuotto voi olla paljon pienempi tai jopa negatiivinen.';w.hidden=false;}else{w.hidden=true;}
+  render();
+}
+['p0','m','r','y'].forEach(function(k){f[k].addEventListener('input',calc);});
+Array.prototype.forEach.call(f.querySelectorAll('.chip'),function(b){b.addEventListener('click',function(){f.m.value=b.getAttribute('data-m');f.y.value=b.getAttribute('data-y');calc();});});
+calc();
+})();
+</script>
+</body>
+</html>
