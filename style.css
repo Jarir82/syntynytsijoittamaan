@@ -124,4 +124,5 @@ footer a{color:var(--accent);font-weight:800}
 .chip:hover{background:var(--pink)}
 .post .top h1.posttitle{margin:6px 0 0;font:800 1.6rem/1.2 "Baloo 2",system-ui,sans-serif}
 .post .top h2 a{color:inherit;text-decoration:none}
+.post .txt a:not(.btn){color:var(--accent);font-weight:800}
 .post .top h2 a:hover{text-decoration:underline}
