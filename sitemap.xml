@@ -40,6 +40,9 @@
     <loc>https://syntynytsijoittamaan.fi/lisatuloja-somesta/</loc>
   </url>
   <url>
+    <loc>https://syntynytsijoittamaan.fi/ukk/</loc>
+  </url>
+  <url>
     <loc>https://syntynytsijoittamaan.fi/blogi/</loc>
   </url>
   <url>
@@ -71,5 +74,9 @@
   <url>
     <loc>https://syntynytsijoittamaan.fi/blogi/nain-tein-taman-sivun-tekoalyn-avulla/</loc>
     <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://syntynytsijoittamaan.fi/blogi/etusivu-selkeammaksi-painikkeet-ryhmiin/</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
 </urlset>
